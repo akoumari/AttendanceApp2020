@@ -1,0 +1,82 @@
+2/9/2020 11:28:14 PM	This log contains information about the import schema operation into project 'AttendanceDB' on computer 'DESKTOP-CE44FR0' by user 'alexk'.
+2/9/2020 11:28:14 PM	Import of database schema has started.
+2/9/2020 11:28:18 PM	Gathering database credentials
+2/9/2020 11:28:18 PM	Gathering database options
+2/9/2020 11:28:18 PM	Gathering users
+2/9/2020 11:28:18 PM	Gathering roles
+2/9/2020 11:28:18 PM	Gathering application roles
+2/9/2020 11:28:18 PM	Gathering role memberships
+2/9/2020 11:28:18 PM	Gathering filegroups
+2/9/2020 11:28:18 PM	Gathering full-text catalogs
+2/9/2020 11:28:18 PM	Gathering assemblies
+2/9/2020 11:28:18 PM	Gathering certificates
+2/9/2020 11:28:18 PM	Gathering asymmetric keys
+2/9/2020 11:28:18 PM	Gathering symmetric keys
+2/9/2020 11:28:18 PM	Gathering encrypted symmetric keys
+2/9/2020 11:28:18 PM	Gathering schemas
+2/9/2020 11:28:18 PM	Gathering XML schema collections
+2/9/2020 11:28:18 PM	Gathering user-defined data types
+2/9/2020 11:28:18 PM	Gathering user-defined types
+2/9/2020 11:28:18 PM	Gathering table types
+2/9/2020 11:28:18 PM	Gathering unique keys for table types
+2/9/2020 11:28:18 PM	Gathering primary keys for table types
+2/9/2020 11:28:18 PM	Gathering indexes for table types
+2/9/2020 11:28:18 PM	Gathering check constraints for table types
+2/9/2020 11:28:18 PM	Gathering default constraints for table types
+2/9/2020 11:28:18 PM	Gathering partition functions
+2/9/2020 11:28:18 PM	Gathering partition schemes
+2/9/2020 11:28:18 PM	Gathering functions
+2/9/2020 11:28:18 PM	Gathering encrypted functions
+2/9/2020 11:28:18 PM	Gathering aggregates
+2/9/2020 11:28:18 PM	Gathering procedures
+2/9/2020 11:28:18 PM	Gathering encrypted procedures
+2/9/2020 11:28:18 PM	Gathering tables
+2/9/2020 11:28:18 PM	Gathering primary keys
+2/9/2020 11:28:18 PM	Gathering unique constraints
+2/9/2020 11:28:18 PM	Gathering foreign keys
+2/9/2020 11:28:18 PM	Gathering default constraints
+2/9/2020 11:28:18 PM	Gathering check constraints
+2/9/2020 11:28:18 PM	Gathering views
+2/9/2020 11:28:18 PM	Gathering encrypted views
+2/9/2020 11:28:18 PM	Gathering indexes
+2/9/2020 11:28:18 PM	Gathering statistics
+2/9/2020 11:28:18 PM	Gathering full-text index stoplists
+2/9/2020 11:28:18 PM	Gathering search property lists
+2/9/2020 11:28:18 PM	Gathering search properties
+2/9/2020 11:28:18 PM	Gathering full-text indexes
+2/9/2020 11:28:18 PM	Gathering column store indexes
+2/9/2020 11:28:18 PM	Gathering spatial indexes
+2/9/2020 11:28:18 PM	Gathering XML indexes
+2/9/2020 11:28:18 PM	Gathering Selective XML indexes
+2/9/2020 11:28:18 PM	Gathering encrypted triggers
+2/9/2020 11:28:18 PM	Gathering triggers
+2/9/2020 11:28:18 PM	Gathering encrypted and clr ddl triggers
+2/9/2020 11:28:18 PM	Gathering ddl triggers
+2/9/2020 11:28:18 PM	Gathering synonyms
+2/9/2020 11:28:18 PM	Gathering defaults
+2/9/2020 11:28:18 PM	Gathering data constraint uddt bindings
+2/9/2020 11:28:18 PM	Gathering rules
+2/9/2020 11:28:18 PM	Gathering data constraint uddt bindings
+2/9/2020 11:28:18 PM	Gathering message types
+2/9/2020 11:28:18 PM	Gathering queues
+2/9/2020 11:28:18 PM	Gathering contracts
+2/9/2020 11:28:18 PM	Gathering services
+2/9/2020 11:28:18 PM	Gathering event notifications
+2/9/2020 11:28:18 PM	Gathering remote service bindings
+2/9/2020 11:28:18 PM	Gathering broker priorities
+2/9/2020 11:28:18 PM	Gathering signatures
+2/9/2020 11:28:18 PM	Gathering data compression options
+2/9/2020 11:28:19 PM	Gathering sequence types
+2/9/2020 11:28:19 PM	Gathering security policies
+2/9/2020 11:28:19 PM	Gather column encryption keys
+2/9/2020 11:28:19 PM	Gathering column master keys
+2/9/2020 11:28:19 PM	Gathering external data sources
+2/9/2020 11:28:19 PM	Gathering external file formats
+2/9/2020 11:28:19 PM	Gathering external tables
+2/9/2020 11:28:19 PM	Gathering extended properties
+2/9/2020 11:28:19 PM	Gathering credentials
+2/9/2020 11:28:19 PM	Gathering logins
+2/9/2020 11:28:19 PM	Gathering server audits
+2/9/2020 11:28:19 PM	Finished importing database.
+2/9/2020 11:28:19 PM	A summary of the import was saved to the following location: C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\Import Schema Logs\AttendanceDB_20200210042814.log
+2/9/2020 11:28:19 PM	Click Finish to continue...

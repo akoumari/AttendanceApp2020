@@ -1,0 +1,10 @@
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\bin\Debug\AttendanceDB.dacpac
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\bin\Debug\AttendanceDB.dll
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\bin\Debug\AttendanceDB.pdb
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\obj\Debug\AttendanceDB.sqlprojAssemblyReference.cache
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\obj\Debug\Model.xml
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\obj\Debug\refactor.xml
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\obj\Debug\postdeploy.sql
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\obj\Debug\predeploy.sql
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\obj\Debug\AttendanceDB.dll
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceDB\obj\Debug\AttendanceDB.pdb
