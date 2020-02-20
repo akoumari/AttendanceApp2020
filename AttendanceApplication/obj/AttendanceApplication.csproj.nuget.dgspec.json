@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexk\\source\\repos\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj": {}
+    "C:\\Users\\alexk\\Desktop\\dev\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexk\\source\\repos\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj": {
+    "C:\\Users\\alexk\\Desktop\\dev\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexk\\source\\repos\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj",
+        "projectUniqueName": "C:\\Users\\alexk\\Desktop\\dev\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj",
         "projectName": "AttendanceApplication",
-        "projectPath": "C:\\Users\\alexk\\source\\repos\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj",
+        "projectPath": "C:\\Users\\alexk\\Desktop\\dev\\AttendanceTracker2020\\AttendanceApplication\\AttendanceApplication.csproj",
         "packagesPath": "C:\\Users\\alexk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexk\\source\\repos\\AttendanceTracker2020\\AttendanceApplication\\obj\\",
+        "outputPath": "C:\\Users\\alexk\\Desktop\\dev\\AttendanceTracker2020\\AttendanceApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alexk\\AppData\\Roaming\\NuGet\\NuGet.Config",
