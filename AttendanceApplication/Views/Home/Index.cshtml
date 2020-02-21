@@ -1,9 +1,58 @@
-﻿
+﻿@using static AttendanceApplication.Controllers.HomeController
 @{
     ViewData["Title"] = "Home Page";
+    ViewData["Role"] = Role;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h1 class="text-center">Welcome To the Attendance Traker App</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="text-center">
+                <h2 class="card-title">Gee shucks it seems you're an @Role!</h2>
+                <h3 class="card-subtitle">Here are your options:</h3>
+            </div>
+            @{
+                if (Role == "admin")
+                {
+                    <div class="col-md-6 offset-3">
+                        <p class="card-text">
+                            Attendance registers are entries that track attendance for activities.
+                            For example, Event Organizers will create attendance registers to
+                            track attendance for mandatory sessions, weekly seminars or
+                            meetings etc...
+
+                        </p>
+                        <a href="~/Home/Admin" class="card-link">Admin - Attendance Tracker Users Panel</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-6">
+                        <p class="card-text">
+                            Attendance registers are entries that track attendance for activities.
+                            For example, Event Organizers will create attendance registers to
+                            track attendance for mandatory sessions, weekly seminars or
+                            meetings etc...
+
+                        </p>
+                        <a href="#" class="card-link">Attendance Register</a>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="card-text">
+                            Attendance schemes provide the criteria for marking attendance in a
+                            register. Each attendance register uses one (and only one)
+                            attendance scheme, assigned when the Event Organizer creates a
+                            new register. The register defines the applicable users and sessions,
+                            and the attendance scheme defines the attendance statuses given to
+                            participants for each session.
+                        </p>
+                        <a href="#" class="card-link">Attendance Scheme</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
 </div>

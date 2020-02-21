@@ -1,0 +1,76 @@
+﻿@model AttendanceApplication.Models.UserModel
+@{
+    ViewData["Title"] = "Admin";
+    
+
+}
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<h1>Admin Panel</h1>
+
+<div class="table">
+    <div>
+        <form method="post">
+            <h2>Event Organizers</h2>
+            <table class="table-primary table-borderless table-light table-striped">
+                <thead class="table-primary">
+                    <tr>
+                        <th>#</th>
+                        <th>Email</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Enable</th>
+                        <th>Approve</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="form-group">
+                                <input asp-for="Email" value="eventorg@isp.com" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input asp-for="Lastname" value="Johnoughthain" class="form-control" />
+                                <span asp-validation-for="Lastname" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input asp-for="Firstname" value="Dough" class="form-control" />
+                                <span asp-validation-for="Firstname" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td><input type="checkbox" checked /></td>
+                        <td><input type="checkbox" name="approve" checked /></td>
+                        <td>
+                            <a asp-area="" asp-controller="Home" asp-action="Admin">
+                                <svg class="bi bi-trash" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.5 7.5A.5.5 0 018 8v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V8z" />
+                                    <path fill-rule="evenodd" d="M16.5 5a1 1 0 01-1 1H15v9a2 2 0 01-2 2H7a2 2 0 01-2-2V6h-.5a1 1 0 01-1-1V4a1 1 0 011-1H8a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM6.118 6L6 6.059V15a1 1 0 001 1h6a1 1 0 001-1V6.059L13.882 6H6.118zM4.5 5V4h11v1h-11z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-primary" asp-action="Admin">Cancel</a> 
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>

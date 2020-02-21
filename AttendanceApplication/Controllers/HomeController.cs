@@ -21,12 +21,16 @@ namespace AttendanceApplication.Controllers
         public string SessionInfo_CurrentTime { get; private set; }
         public string SessionInfo_SessionTime { get; private set; }
         public string SessionInfo_MiddlewareValue { get; private set; }
-        [TempData]
+        public static string Role = "";
         public string Message { get; set; }
 
-
-
-
+        [HttpGet]
+        [Route("~/Home/Logout")]
+        public IActionResult Logout()
+        {
+            Role = "";
+            return View("Login");
+        }
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -35,16 +39,32 @@ namespace AttendanceApplication.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString(SessionKeyName) == null)
+            if (HttpContext.Session.GetString(SessionKeyName) == null || Role == "")
             {
                 return View("Login");
             }
             return View();
         }
+        [HttpGet]
+        [Route("~/Home/Admin")]
+        public IActionResult GetAdmin()
+        {
+            return View("Admin");
+        }
+        [HttpPost]
+        [Route("~/Home/Admin")]
+        public IActionResult PostAdmin(UserModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Privacy");
+            }
+            return View("Admin");
+        }
 
         public IActionResult Privacy()
         {
-            if (HttpContext.Session.GetString(SessionKeyName) == null)
+            if (HttpContext.Session.GetString(SessionKeyName) == null || Role == "")
             {
                 return View("Login");
             }
@@ -73,21 +93,23 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/Login")]
         public IActionResult GetLogin()
         {
-            ViewData["isLogin"] = "yeah we on the log in page homie";
-            return View();
+            return View("Login");
         }
         [HttpPost]
         [Route("~/Home/Login")]
         public IActionResult PostLogin(UserModel model)
         {
-            Message = "";
+            
             if (model.Email == "admin@isp.net" && model.Password == "admin")
             {
                 HttpContext.Session.SetString(SessionKeyName, "admin");
+                Role = "admin";
+                
                 return View("Index");
             }
             else if (model.Email == "eventorg@isp.net" && model.Password == "eventorg")
             {
+                Role = "eventorg";
                 HttpContext.Session.SetString(SessionKeyName, "eventorg");
                 return View("Index");
             }
@@ -96,7 +118,7 @@ namespace AttendanceApplication.Controllers
                 Message = "Invalid email or password";
                 return View("Login");
             }
-            Message = "";
+            //Message = "";
             return View("Login");
         
         }

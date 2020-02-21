@@ -1,9 +1,10 @@
 ﻿@model AttendanceApplication.Models.UserModel
 @{
     ViewData["Title"] = "Login";
-    ViewData["Message"] = TempData.Peek("Message");
 }
-
+<script>
+    document.querySelector(".logout").style.display = "none";
+</script>
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -28,10 +29,10 @@
                         </div>
                         <div>
 
-                            <span style="color:red">@ViewData["Message"]</span>
+                            <span style="color:red">@TempData.Peek("Message")</span>
                             <span hidden>@TempData.Remove("Message")</span>
-                        
-                        </div>                        
+
+                        </div>
                         <button class="btn btn-lg btn-primary" asp-action="Login" type="submit">Sign in</button>
                         <a class="btn btn-lg btn-primary" asp-action="Register">Register</a>
                         <div>

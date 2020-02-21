@@ -8,14 +8,13 @@ namespace AttendanceApplication.Models
 {
     public class UserModel
     {
-        [Required(ErrorMessage = "Please provide a Password")]
+        public int ID { get; set; }
+        [Required(ErrorMessage = "Please provide a first name")]
         [Display(Name = "First Name")]
         public string Firstname { get; set; }
-        [Required(ErrorMessage = "Please provide a Password")]
+        [Required(ErrorMessage = "Please provide a last name")]
         [Display(Name = "Last Name")]
         public string Lastname { get; set; }
-        [Required(ErrorMessage = "Please provide a Password")]
-        public string Address { get; set; }
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Address")]
         [Required(ErrorMessage = "Please provide your email address.")]
@@ -27,6 +26,10 @@ namespace AttendanceApplication.Models
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Your password and confirm password do not match.")]
         public string ConfirmPassword { get; set; }
+        
+        [Required(ErrorMessage = "Please provide an address")]
+        public string Address { get; set; }
+        
 
 
     }
