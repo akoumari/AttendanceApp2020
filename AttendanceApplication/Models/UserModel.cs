@@ -29,6 +29,8 @@ namespace AttendanceApplication.Models
         
         [Required(ErrorMessage = "Please provide an address")]
         public string Address { get; set; }
+
+
         
 
 

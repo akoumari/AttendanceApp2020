@@ -1,4 +1,5 @@
 ﻿@model AttendanceApplication.Models.UserModel
+@using static AttendanceApplication.Controllers.HomeController
 @{
     ViewData["Title"] = "Login";
 }
@@ -29,14 +30,13 @@
                         </div>
                         <div>
 
-                            <span style="color:red">@TempData.Peek("Message")</span>
-                            <span hidden>@TempData.Remove("Message")</span>
+                            <span style="color:red">@Message</span>
 
                         </div>
                         <button class="btn btn-lg btn-primary" asp-action="Login" type="submit">Sign in</button>
                         <a class="btn btn-lg btn-primary" asp-action="Register">Register</a>
                         <div>
-                            <a asp-action="ChangePassword">Fogot yo password again dumb-dumb!?</a>
+                            <a asp-action="PassReset">Fogot yo password again dumb-dumb!?</a>
                         </div>
                     </form>
                 </div>

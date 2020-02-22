@@ -14,6 +14,7 @@ namespace AttendanceApplication.Controllers
 
     public class HomeController : Controller
     {
+        //vaiables
         private readonly ILogger<HomeController> _logger;
         public const string SessionKeyName = "_Name";
 
@@ -22,7 +23,98 @@ namespace AttendanceApplication.Controllers
         public string SessionInfo_SessionTime { get; private set; }
         public string SessionInfo_MiddlewareValue { get; private set; }
         public static string Role = "";
-        public string Message { get; set; }
+        public static string Message = "";
+        //****************************************************
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+        
+
+
+
+        //Login, Logout, and Register
+        [HttpGet]
+        [Route("~/Home/Register")]
+        public IActionResult GetRegister()
+        {
+
+            return View("Register");
+        }
+        [HttpPost]
+        [Route("~/Home/Register")]
+        public IActionResult PostRegister(UserModel user)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                Message = "Your account was submitted for activation please confirm your account at: " + user.Email;
+                return View("Login");
+            }
+            return View("Register");
+        }
+
+        [HttpGet]
+        [Route("~/Home/PassReset")]
+        public IActionResult GetPassReset()
+        {
+
+            return View("PassReset");
+        }
+        [HttpPost]
+        [Route("~/Home/PassReset")]
+        public IActionResult PostPassReset(PassResetModel model)
+        {
+            if (ModelState.IsValid )
+            {
+                if (model.Email == "eventorg@isp.net" || model.Email == "admin@isp.net")
+                {
+                    Message = "Your account was submitted for activation please confirm your account at: " + model.Email;
+                    return View("Login");
+                }
+                Message = "The email address: " + model.Email+ " was not found in our system";
+                return View("PassReset");
+            }
+            return View("PassReset");
+        }
+
+        [HttpGet]
+        [Route("~/Home/Login")]
+        public IActionResult GetLogin()
+        {
+            return View("Login");
+        }
+        [HttpPost]
+        [Route("~/Home/Login")]
+        public IActionResult PostLogin(UserModel model)
+        {
+
+            if (model.Email == "admin@isp.net" && model.Password == "admin")
+            {
+                HttpContext.Session.SetString(SessionKeyName, "admin");
+                Role = "admin";
+                Message = "";
+                return View("Index");
+            }
+            else if (model.Email == "eventorg@isp.net" && model.Password == "eventorg")
+            {
+                Role = "eventorg";
+                Message = "";
+                HttpContext.Session.SetString(SessionKeyName, "eventorg");
+                return View("Index");
+            }
+            else if (model.Email != null && model.Password != null)
+            {
+                Message = "Invalid email or password";
+                return View("Login");
+            }
+            Message = "";
+            return View("Login");
+
+        }
+
 
         [HttpGet]
         [Route("~/Home/Logout")]
@@ -31,12 +123,9 @@ namespace AttendanceApplication.Controllers
             Role = "";
             return View("Login");
         }
+        //****************************************************
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        //Home
         public IActionResult Index()
         {
             if (HttpContext.Session.GetString(SessionKeyName) == null || Role == "")
@@ -45,6 +134,10 @@ namespace AttendanceApplication.Controllers
             }
             return View();
         }
+        //****************************************************
+
+        //EventOrg
+        //Attendance Register
         [HttpGet]
         [Route("~/Home/AddRegistry")]
         public IActionResult GetAddRegistry()
@@ -67,6 +160,15 @@ namespace AttendanceApplication.Controllers
         {
             return View("AttendanceRegistry");
         }
+        //***********************
+        //Attendance Schema
+
+
+
+
+        //****************************************************
+
+        //Admin
         [HttpGet]
         [Route("~/Home/Admin")]
         public IActionResult GetAdmin()
@@ -75,15 +177,15 @@ namespace AttendanceApplication.Controllers
         }
         [HttpPost]
         [Route("~/Home/Admin")]
-        public IActionResult PostAdmin(UserModel model)
+        public IActionResult PostAdmin(AdminModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model.test())
             {
-                return View("Privacy");
+                return View("Index");
             }
             return View("Admin");
         }
-
+        //****************************************************
         public IActionResult Privacy()
         {
             if (HttpContext.Session.GetString(SessionKeyName) == null || Role == "")
@@ -92,58 +194,7 @@ namespace AttendanceApplication.Controllers
             }
             return View();
         }
-        [HttpGet]
-        [Route("~/Home/Register")]
-        public IActionResult GetRegister()
-        {
-
-            return View("Register");
-        }
-        [HttpPost]
-        [Route("~/Home/Register")]
-        public IActionResult PostRegister(UserModel user)
-        {
-            
-            
-            if (ModelState.IsValid)
-            {
-                return View("Index");
-            }
-            return View("Register");
-        }
-        [HttpGet]
-        [Route("~/Home/Login")]
-        public IActionResult GetLogin()
-        {
-            return View("Login");
-        }
-        [HttpPost]
-        [Route("~/Home/Login")]
-        public IActionResult PostLogin(UserModel model)
-        {
-            
-            if (model.Email == "admin@isp.net" && model.Password == "admin")
-            {
-                HttpContext.Session.SetString(SessionKeyName, "admin");
-                Role = "admin";
-                
-                return View("Index");
-            }
-            else if (model.Email == "eventorg@isp.net" && model.Password == "eventorg")
-            {
-                Role = "eventorg";
-                HttpContext.Session.SetString(SessionKeyName, "eventorg");
-                return View("Index");
-            }
-            else if(model.Email != null && model.Password != null)
-            {
-                Message = "Invalid email or password";
-                return View("Login");
-            }
-            //Message = "";
-            return View("Login");
         
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
