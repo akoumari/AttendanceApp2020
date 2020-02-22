@@ -46,6 +46,28 @@ namespace AttendanceApplication.Controllers
             return View();
         }
         [HttpGet]
+        [Route("~/Home/AddRegistry")]
+        public IActionResult GetAddRegistry()
+        {
+            return View("AddRegistry");
+        }
+        [HttpPost]
+        [Route("~/Home/AddRegistry")]
+        public IActionResult PostAddRegistry(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("AttendanceRegistry");
+            }
+            return View("AddRegistry");
+        }
+        [HttpGet]
+        [Route("~/Home/AttendanceRegistry")]
+        public IActionResult GetAttendanceRegistry()
+        {
+            return View("AttendanceRegistry");
+        }
+        [HttpGet]
         [Route("~/Home/Admin")]
         public IActionResult GetAdmin()
         {
