@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AttendanceApplication.Models;
 using Microsoft.AspNetCore.Http;
-
+using System.Text.RegularExpressions;
 
 namespace AttendanceApplication.Controllers
 {
@@ -24,6 +24,9 @@ namespace AttendanceApplication.Controllers
         public string SessionInfo_MiddlewareValue { get; private set; }
         public static string Role = "";
         public static string Message = "";
+        public static string[] ErrorBag = new string[30];
+        
+        public Regex rgx = new Regex(@"^[a-zA-Z0-9\-_]+\.csv$");
         //****************************************************
 
         public HomeController(ILogger<HomeController> logger)
@@ -71,7 +74,7 @@ namespace AttendanceApplication.Controllers
             {
                 if (model.Email == "eventorg@isp.net" || model.Email == "admin@isp.net")
                 {
-                    Message = "Your account was submitted for activation please confirm your account at: " + model.Email;
+                    Message = "A password reset was sent to your email at: " + model.Email;
                     return View("Login");
                 }
                 Message = "The email address: " + model.Email+ " was not found in our system";
@@ -142,12 +145,18 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/AddRegistry")]
         public IActionResult GetAddRegistry()
         {
+
             return View("AddRegistry");
         }
         [HttpPost]
         [Route("~/Home/AddRegistry")]
         public IActionResult PostAddRegistry(RegisterModel model)
         {
+            if (!rgx.IsMatch(model.ClassList.FileName))
+            {
+                ErrorBag[0] ="Please only upload CSV files!";
+                return View("AddRegistry");
+            }
             if (ModelState.IsValid)
             {
                 return View("AttendanceRegistry");
@@ -179,7 +188,7 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/Admin")]
         public IActionResult PostAdmin(AdminModel model)
         {
-            if (ModelState.IsValid && model.test())
+            if (ModelState.IsValid)
             {
                 return View("Index");
             }

@@ -10,6 +10,7 @@ namespace AttendanceApplication.Models
 {
     public class RegisterModel
     {
+        
         [Display(Name = "Name")]
         [Required(ErrorMessage = "Please fill in the Name section.")]
         public string Name { get; set; }
@@ -22,12 +23,13 @@ namespace AttendanceApplication.Models
         [Required(ErrorMessage = "You must select scheme.")]
         public string AttendDanceScheme { get; set; }
 
-        public string SessionName { get; set; }
+        public string[] SessionName { get; set; }
+
         [Display(Name="Class list .csv")]
         [Required(ErrorMessage = "You must upload a class list.")]
-        [RegularExpression(@"^*.csv$",ErrorMessage = "file must be a csv")]
         public IFormFile ClassList { get; set; }
-        public string SessionDescription { get; set; }
+
+        public string[] SessionDescription { get; set; }
 
         public List<SelectListItem> Scheme
         {
@@ -36,8 +38,8 @@ namespace AttendanceApplication.Models
         }
 
         [Display(Name = "Num")]
-        [Required]
         public string Order { get; set; }
+
         public List<SelectListItem> NumOfOrder
         {
             get;
