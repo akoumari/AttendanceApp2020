@@ -1,7 +1,8 @@
 ﻿
 @{
-    ViewData["Title"] = "AttendanceRegistry";
+    ViewData["Title"] = "Schemes";
 }
+
 @using static AttendanceApplication.Controllers.HomeController
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -12,17 +13,17 @@
 <div class="container">
 
 
-        <h1>Attendance Register</h1>
+    <h1>Attendance Schemes</h1>
     <div class="row">
         <div id="registers" class="table col-sm-6">
             <table class="table-primary table-borderless table-light table-striped">
                 <thead class="table-primary">
 
                     <tr>
-                        <th>Register Name</th>
+                        <th>Scheme Name</th>
                         <th></th>
-                        <th>Cause for Concern</th>
-                        <th># Of Sessions</th>
+                        <th>Default Scheme</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -31,43 +32,39 @@
                         <td>COMP 1220</td>
                         <td class="select">
                             <select class="UrlList" onchange="doNavigate()">
-                                <option value="">View Attendance</option>
-                                <option value="">Edit</option>
-                                <option value="">Delete</option>
+                                <option value="">View in new window</option>
+                                <option value="">Copy</option>
                             </select>
                         </td>
-                        <td>-</td>
-                        <td>15</td>
+                        <td>Current Default</td>
                     </tr>
                     <tr>
                         <td>MATH 101</td>
-                        <td>
+                        <td class="select">
                             <select class="UrlList" onchange="doNavigate()">
-                                <option value="">View Attendance</option>
-                                <option value="">Edit</option>
-                                <option value="">Delete</option>
+                                <option value="">View in new window</option>
+                                <option value="">Copy</option>
                             </select>
                         </td>
-                        <td>>50%</td>
-                        <td>25</td>
+                        <td><a href="" class="btn btn-light">Set as Default</a></td>
+
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="col-3 ">
             <div class="row">
-                <a asp-area="" asp-controller="Home" asp-action="AddRegistry" id="registryBtn" class="btn btn-primary">New Registry</a>
+                <a asp-area="" asp-controller="Home" asp-action="AddSchemes" id="registryBtn" class="btn btn-primary">New Scheme</a>
             </div>
             <div class="row">
                 <div class="bs-example">
                     <div class="popover-demo mb-2">
-                        <button type="button" class="btn btn-info" data-toggle="popover" title="What are attendance registers?"
-                                data-content="Attendance registers are entries that you create to track attendance for activites in your orginization
-                of course. For example, you can create attendance registers to track attendance for mandatory
-                sessions, weekly seminars or meetings. Use Registers to define the sessions,
-                attendance expectations and applicable users and enter data as you complete each session.
-                Click a registers name to view or make changes to its attendance data.">
-                            What are attendance registers?
+                        <button type="button" class="btn btn-info" data-toggle="popover" title="What are attendance schemes?"
+                                data-content="Attendance schemes provide the criteria for marking attendance in a register Each attendance register uses one attendance scheme, which you assign when creating a new register. The register defines the applicable users and sessions, and the attendance scheme defines the attendance statuses that you can give to users for each session
+                                For example, a simple attendance scheme defines two possible attendance statuses present and absent. If you were to apply this scheme to an attendance register, you would have two options for marking attendance for the register's sessions. Users that attend a session would be marked as present and users that do not attend would be marked as absent
+                                You can create more complex schemes that define more statuses such as late and authorized absent. This provides flexibility to accommodate a wide range of attendance options.
+                                ">
+                            What are attendance Schemes?
                         </button>
                     </div>
                 </div>

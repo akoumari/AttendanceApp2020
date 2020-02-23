@@ -1,0 +1,202 @@
+﻿@model AttendanceApplication.Models.AttendanceSchemeModel
+@using static AttendanceApplication.Controllers.HomeController
+@{
+    ViewData["Title"] = "AddSchemes";
+}
+    <div class="container">
+        <h1>New Scheme</h1>
+        <hr />
+        <h4>General</h4>
+        <form method="post" asp-action="AddSchemes">
+            <div class="row">
+                <div class="col-md-4">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <h5>Attendance Statuses</h5>
+            </div>
+            <div class="row">
+                <div class="row text-danger">
+                    <div class="col-4">
+                        <p>@ErrorBag[3]</p>
+
+                        <p>@ErrorBag[4]</p>
+                        <p>@ErrorBag[5]</p>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <table class="table-primary table-borderless table-light table-striped">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Symbol</th>
+                                <th scope="col">Status Name</th>
+                                <th scope="col">Assigned %</th>
+                                <th scope="col">Order</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <div class="form-group">
+                                        <label asp-for="Symbol" class="control-label"></label>
+                                        <input asp-for="Symbol" class="form-control" />
+                                        <span asp-validation-for="Symbol" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label asp-for="StatusName" class="control-label"></label>
+                                        <input asp-for="StatusName" class="form-control" />
+                                        <span asp-validation-for="StatusName" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label asp-for="AssignedPercentage" class="control-label"></label>
+                                        <input asp-for="AssignedPercentage" class="form-control" />
+                                        <span asp-validation-for="AssignedPercentage" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("NumOfOrder", new List<SelectListItem>
+                                        {
+                                            new SelectListItem { Text = "1", Value = "1", Selected = true},
+                                            new SelectListItem { Text = "2", Value = "2" },
+                                            new SelectListItem { Text = "3", Value = "3" }
+                                        })
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <a id="delete1" href="#">
+                                        <svg class="bi bi-trash" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.5 7.5A.5.5 0 018 8v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V8z" />
+                                            <path fill-rule="evenodd" d="M16.5 5a1 1 0 01-1 1H15v9a2 2 0 01-2 2H7a2 2 0 01-2-2V6h-.5a1 1 0 01-1-1V4a1 1 0 011-1H8a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM6.118 6L6 6.059V15a1 1 0 001 1h6a1 1 0 001-1V6.059L13.882 6H6.118zM4.5 5V4h11v1h-11z" clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            @{
+                                for (int i = 2; i <= 20; i++)
+                                {
+                                    <tr style="display:none">
+                                        <td id="@i">@i</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label asp-for="Symbol" class="control-label"></label>
+                                                <input asp-for="Symbol" disabled class="form-control" />
+                                                <span asp-validation-for="Symbol" class="text-danger"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label asp-for="StatusName" class="control-label"></label>
+                                                <input asp-for="StatusName" disabled class="form-control" />
+                                                <span asp-validation-for="StatusName" class="text-danger"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label asp-for="AssignedPercentage" class="control-label"></label>
+                                                <input asp-for="AssignedPercentage" disabled class="form-control" />
+                                                <span asp-validation-for="AssignedPercentage" class="text-danger"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("NumOfOrder", new List<SelectListItem>
+                                                {
+                                                    new SelectListItem { Text = "1", Value = "1", Selected = true},
+                                                    new SelectListItem { Text = "2", Value = "2" },
+                                                    new SelectListItem { Text = "3", Value = "3" }
+                                                })
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a class="delete" href="#">
+                                                <svg class="bi bi-trash" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.5 7.5A.5.5 0 018 8v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V8z" />
+                                                    <path fill-rule="evenodd" d="M16.5 5a1 1 0 01-1 1H15v9a2 2 0 01-2 2H7a2 2 0 01-2-2V6h-.5a1 1 0 01-1-1V4a1 1 0 011-1H8a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM6.118 6L6 6.059V15a1 1 0 001 1h6a1 1 0 001-1V6.059L13.882 6H6.118zM4.5 5V4h11v1h-11z" clip-rule="evenodd" />
+                                                </svg>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <br />
+                    <p>
+                        <div id="hidden" style="display:none">1</div>
+                        <span id="message">
+
+                            <a id="add" href="#">
+                                <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 5.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H6a.5.5 0 010-1h3.5V6a.5.5 0 01.5-.5z" clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd" d="M9.5 10a.5.5 0 01.5-.5h4a.5.5 0 010 1h-3.5V14a.5.5 0 01-1 0v-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </span>
+                    </p>
+
+                    <hr />
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a class="btn btn-primary" asp-action="AddRegistry">Cancel</a>
+                </div>
+            </div>
+
+
+        </form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $("#add").click(function (e) {
+            e.preventDefault();
+            let rows = parseInt($('#hidden').text());
+            if (rows < 19) {
+                var x = $('tr[style="display:none"]')[0];
+                $(x).attr('style', 'display:default');
+                var y = $('tr[style!="display:none"]');
+                $(y).children('td').children('div').children('input').attr('disabled', false);
+                rows++;
+                $('#hidden').text(rows);
+            }
+            else {
+                var x = $('tr[style="display:none"]')[0];
+                $(x).attr('style', 'display:default');
+                var y = $('tr[style!="display:none"]');
+                $(y).children('td').children('div').children('input').attr('disabled', false);
+                $("#message").append('<div class="alert alert-danger col-3">You have reached the max amount of rows</div>');
+                $("#add").attr('style', 'display:none')
+            }
+
+
+        });
+    });
+
+</script>

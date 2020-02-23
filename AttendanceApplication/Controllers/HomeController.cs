@@ -28,6 +28,8 @@ namespace AttendanceApplication.Controllers
         
         public Regex rgx = new Regex(@"^[\w\-]+\.csv$");
         public Regex rgxName = new Regex(@"^[\w\-\s]+$");
+        public Regex rgxPerc = new Regex(@"^[0-9]{1,3}$");
+        public Regex rgxSymbol = new Regex(@"^[a-zA-Z]{1,2}$");
         //****************************************************
 
         public HomeController(ILogger<HomeController> logger)
@@ -64,7 +66,7 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/PassReset")]
         public IActionResult GetPassReset()
         {
-
+            Message = "Don't worry it happens to the best of us!";
             return View("PassReset");
         }
         [HttpPost]
@@ -125,6 +127,7 @@ namespace AttendanceApplication.Controllers
         public IActionResult Logout()
         {
             Role = "";
+            Message = "Buh-bye now!!!";
             return View("Login");
         }
         //****************************************************
@@ -146,6 +149,10 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/AddRegistry")]
         public IActionResult GetAddRegistry()
         {
+            if (Role != "eventorg")
+            {
+                return View("index");
+            }
 
             return View("AddRegistry");
         }
@@ -153,6 +160,10 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/AddRegistry")]
         public IActionResult PostAddRegistry(RegisterModel model)
         {
+            if (Role != "eventorg")
+            {
+                return View("index");
+            }
             for (int i = 0; i < ErrorBag.Length; i++)
             {
                 ErrorBag[i] = null;
@@ -165,26 +176,19 @@ namespace AttendanceApplication.Controllers
             }
             for(int i = 0; i < model.SessionName.Length; i++)
             {
-                if(model.SessionName[0] == null)
+                if(model.SessionName[i] == null || !rgxName.IsMatch(model.SessionName[i]))
                 {
                     ErrorBag[1] = "Please provide a session name for each session you add!";
                     break;
                 }
-                if(!rgxName.IsMatch(model.SessionName[i]))
-                {
-                    ErrorBag[1] = "Please provide a session name for each session you add!"; 
-                }
+               
             }
             for (int i = 0; i < model.SessionDescription.Length; i++)
             {
-                if (model.SessionDescription[0] == null)
+                if (model.SessionDescription[i] == null || !rgxName.IsMatch(model.SessionDescription[i]))
                 {
                     ErrorBag[2] = "Please provide a session name for each session you add!";
                     break;
-                }
-                if (!rgxName.IsMatch(model.SessionDescription[i]))
-                {
-                    ErrorBag[2] = "Please provide a session description for each session you add!";
                 }
             }
             if (ModelState.IsValid && ErrorBag[0] == null && ErrorBag[1] == null && ErrorBag[2] == null)
@@ -202,12 +206,85 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/AttendanceRegistry")]
         public IActionResult GetAttendanceRegistry()
         {
+            if (Role != "eventorg")
+            {
+                return View("index");
+            }
             return View("AttendanceRegistry");
         }
         //***********************
         //Attendance Schema
+        [HttpGet]
+        [Route("~/Home/AddSchemes")]
+        public IActionResult GetAddSchemes()
+        {
+            if (Role != "eventorg")
+            {
+                return View("index");
+            }
 
+            return View("AddSchemes");
+        }
+        [HttpPost]
+        [Route("~/Home/AddSchemes")]
+        public IActionResult PostAddSchemes(AttendanceSchemeModel model)
+        {
+            if (Role != "eventorg")
+            {
+                return View("index");
+            }
+            for (int i = 0; i < ErrorBag.Length; i++)
+            {
+                ErrorBag[i] = null;
+            }
 
+            for (int i = 0; i < model.Symbol.Length; i++)
+            {
+                if (model.Symbol[i] == null || !rgxSymbol.IsMatch(model.Symbol[i]))
+                {
+                    ErrorBag[3] = "Please provide 1-2 letters as a status symbol for each attendance status you add!";
+                    break;
+                }
+
+            }
+            for (int i = 0; i < model.StatusName.Length; i++)
+            {
+                if (model.StatusName[i] == null || !rgxName.IsMatch(model.StatusName[i]))
+                {
+                    ErrorBag[4] = "Please provide a valid status name for each attendance status you add";
+                    break;
+                }
+            }
+            for (int i = 0; i < model.AssignedPercentage.Length; i++)
+            {
+                if (model.AssignedPercentage[i] != null && !rgxPerc.IsMatch(model.AssignedPercentage[i]))
+                {
+                    ErrorBag[5] = "Please provide a valid percentage between 1-99 or leave blank!";
+                    break;
+                }
+            }
+            if (ModelState.IsValid && ErrorBag[3] == null && ErrorBag[4] == null && ErrorBag[5] == null)
+            {
+                for (int i = 0; i < ErrorBag.Length; i++)
+                {
+                    ErrorBag[i] = null;
+                }
+                Message = "Attendance Scheme was saved!";
+                return View("Schemes");
+            }
+            return View("AddSchemes");
+        }
+
+        [HttpGet]
+        [Route("~/Home/Schemes")]
+        public IActionResult GetAttendanceSchemes()
+        {
+            if (Role != "eventorg")
+            {
+                return View("index");
+            }
+            return View("Schemes");
+        }
 
 
         //****************************************************
@@ -217,12 +294,20 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/Admin")]
         public IActionResult GetAdmin()
         {
+            if(Role != "admin")
+            {
+                return View("index");
+            }
             return View("Admin");
         }
         [HttpPost]
         [Route("~/Home/Admin")]
         public IActionResult PostAdmin(AdminModel model)
         {
+            if (Role != "admin")
+            {
+                return View("index");
+            }
             if (ModelState.IsValid)
             {
                 return View("Index");

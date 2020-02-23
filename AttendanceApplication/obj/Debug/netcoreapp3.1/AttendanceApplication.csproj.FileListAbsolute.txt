@@ -243,3 +243,5 @@ C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceApplication\obj\Debug
 C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceApplication\obj\Debug\netcoreapp3.1\Razor\Views\Home\AttendanceRegistry.cshtml.g.cs
 C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceApplication\obj\Debug\netcoreapp3.1\Razor\Views\Home\test.cshtml.g.cs
 C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceApplication\obj\Debug\netcoreapp3.1\Razor\Views\Home\PassReset.cshtml.g.cs
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceApplication\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddSchemes.cshtml.g.cs
+C:\Users\alexk\Desktop\dev\AttendanceTracker2020\AttendanceApplication\obj\Debug\netcoreapp3.1\Razor\Views\Home\Schemes.cshtml.g.cs
