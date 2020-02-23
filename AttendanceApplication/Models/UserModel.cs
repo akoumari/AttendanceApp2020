@@ -23,10 +23,12 @@ namespace AttendanceApplication.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Please provide a Password")]
         [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Password is too short"), MaxLength(12, ErrorMessage = "Password is too long max char. is 12"), RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&\-\+])(.{6,}$)", ErrorMessage = "Passwords must be 6 - 12 characters in length, contain at least 1 uppercase letter, contain at least 1 special character")]
         public string Password { get; set; }
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Your password and confirm password do not match.")]
+        
         public string ConfirmPassword { get; set; }
         
         [Required(ErrorMessage = "Please provide an address")]
