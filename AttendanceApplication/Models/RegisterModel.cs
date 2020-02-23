@@ -13,14 +13,16 @@ namespace AttendanceApplication.Models
         
         [Display(Name = "Name")]
         [Required(ErrorMessage = "Please fill in the Name section.")]
+        [MinLength(3,ErrorMessage = "Name is too short"),MaxLength(20, ErrorMessage = "Name is too long max char. is 20"), RegularExpression(@"^[\w\-\s]+$", ErrorMessage ="Name can only contain a-z, 0-9, dashes/underscores, and spaces.")]
         public string Name { get; set; }
 
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Please fill in the Description section.")]
+        [MinLength(3, ErrorMessage = "Description is too short"), MaxLength(140, ErrorMessage = "Description is too long max char. is 140"), RegularExpression(@"^[\w\-\s]+$", ErrorMessage = "Description can only contain a-z, 0-9, dashes/underscores, and spaces.")]
         public string Description { get; set; }
 
         [Display(Name = "Attendance Scheme")]
-        [Required(ErrorMessage = "You must select scheme.")]
+
         public string AttendDanceScheme { get; set; }
 
         public string[] SessionName { get; set; }

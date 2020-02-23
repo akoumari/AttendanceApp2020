@@ -26,7 +26,8 @@ namespace AttendanceApplication.Controllers
         public static string Message = "";
         public static string[] ErrorBag = new string[30];
         
-        public Regex rgx = new Regex(@"^[a-zA-Z0-9\-_]+\.csv$");
+        public Regex rgx = new Regex(@"^[\w\-]+\.csv$");
+        public Regex rgxName = new Regex(@"^[\w\-\s]+$");
         //****************************************************
 
         public HomeController(ILogger<HomeController> logger)
@@ -152,13 +153,47 @@ namespace AttendanceApplication.Controllers
         [Route("~/Home/AddRegistry")]
         public IActionResult PostAddRegistry(RegisterModel model)
         {
-            if (!rgx.IsMatch(model.ClassList.FileName))
+            for (int i = 0; i < ErrorBag.Length; i++)
+            {
+                ErrorBag[i] = null;
+            }
+
+            if (model.ClassList != null && !rgx.IsMatch(model.ClassList.FileName))
             {
                 ErrorBag[0] ="Please only upload CSV files!";
-                return View("AddRegistry");
+                
             }
-            if (ModelState.IsValid)
+            for(int i = 0; i < model.SessionName.Length; i++)
             {
+                if(model.SessionName[0] == null)
+                {
+                    ErrorBag[1] = "Please provide a session name for each session you add!";
+                    break;
+                }
+                if(!rgxName.IsMatch(model.SessionName[i]))
+                {
+                    ErrorBag[1] = "Please provide a session name for each session you add!"; 
+                }
+            }
+            for (int i = 0; i < model.SessionDescription.Length; i++)
+            {
+                if (model.SessionDescription[0] == null)
+                {
+                    ErrorBag[2] = "Please provide a session name for each session you add!";
+                    break;
+                }
+                if (!rgxName.IsMatch(model.SessionDescription[i]))
+                {
+                    ErrorBag[2] = "Please provide a session description for each session you add!";
+                }
+            }
+            if (ModelState.IsValid && ErrorBag[0] == null && ErrorBag[1] == null && ErrorBag[2] == null)
+            {
+                for(int i = 0; i < ErrorBag.Length; i++)
+                {
+                    ErrorBag[i] = null;
+                }
+                Message = "Attendance register was saved!";
                 return View("AttendanceRegistry");
             }
             return View("AddRegistry");

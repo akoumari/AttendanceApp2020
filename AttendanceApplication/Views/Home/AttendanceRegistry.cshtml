@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "AttendanceRegistry";
 }
-
+@using static AttendanceApplication.Controllers.HomeController
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -16,7 +16,8 @@
 <div class="container">
 
 
-    <div class="row justify-content-sm-center">
+        <h1>Attendance Register</h1>
+    <div class="row">
         <div id="registers" class="table col-sm-6">
             <table class="table-primary table-borderless table-light table-striped">
                 <thead class="table-primary">
@@ -58,24 +59,29 @@
             </table>
         </div>
         <div class="col-3 ">
-        <div class="row">
-            <a  asp-area="" asp-controller="Home" asp-action="AddRegistry" id="registryBtn" class="btn btn-primary">New Registry</a>
-        </div>
-        <div class="row">
-            <div class="bs-example">
-                <div class="popover-demo mb-2">
-                    <button type="button" class="btn btn-info" data-toggle="popover" title="What are attendance registers?"
-                            data-content="Attendance registers are entries that you create to track attendance for activites in your orginization
+            <div class="row">
+                <a asp-area="" asp-controller="Home" asp-action="AddRegistry" id="registryBtn" class="btn btn-primary">New Registry</a>
+            </div>
+            <div class="row">
+                <div class="bs-example">
+                    <div class="popover-demo mb-2">
+                        <button type="button" class="btn btn-info" data-toggle="popover" title="What are attendance registers?"
+                                data-content="Attendance registers are entries that you create to track attendance for activites in your orginization
                 of course. For example, you can create attendance registers to track attendance for mandatory
                 sessions, weekly seminars or meetings. Use Registers to define the sessions,
                 attendance expectations and applicable users and enter data as you complete each session.
                 Click a registers name to view or make changes to its attendance data.">
-                        What are attendance registers?
-                    </button>
+                            What are attendance registers?
+                        </button>
+                    </div>
                 </div>
             </div>
+            <div class="row"></div>
         </div>
-        <div class="row"></div>
+    </div>
+    <div class="row">
+        <div class="col-4 text-success">
+            @Message
         </div>
     </div>
     <script>
