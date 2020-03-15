@@ -12,3 +12,8 @@ This project was for school and was meant to be a wireframe/proof of concept and
 - [ ] Basic data persitence
 - [ ] Database
 
+#### Technologies used:
+- .NET Core
+- JQuery
+- Bootstrap
+
