@@ -1,5 +1,5 @@
 # Attendance Tracker App 2020
-## About
+
 This project was for school and was meant to be a wireframe/proof of concept and many core functionalities were not required/implemented.
 
 #### Feature list:
