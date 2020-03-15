@@ -7,7 +7,8 @@ This project was for school and was meant to be a wireframe/proof of concept and
 - [x] Basic (non-encrypted) login
 - [x] Two levels of autorization (Admin and User)
 - [x] Form feild validation (front end and back end)
-- [ ] Basic data persitence
-- [ ] Database
 - [ ] Account creation
 - [ ] Account activation - email
+- [ ] Basic data persitence
+- [ ] Database
+
